@@ -51,6 +51,7 @@ export default function TabNavigation() {
         component={StackFavoritos} 
         options={{
           title: 'Favoritos',
+          headerShown: false,
         }}
       />
     </Tab.Navigator>

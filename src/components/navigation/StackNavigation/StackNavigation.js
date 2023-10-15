@@ -12,8 +12,15 @@ export default function StackNavigation() {
       name='RickAndMortyApi'
       component={RickAndMortyApi}
       options={{
-        title: '',
+        title: 'Personajes',
         headerTransparent: true,
+        headerShown: true,
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          fontWeight: 'bold', // Otras opciones de estilo para el título 
+          color: 'green', // Cambia 'tu_color_texto_titulo' 
+          fontSize: 25,
+        }
       }}
     />
 
@@ -24,9 +31,6 @@ export default function StackNavigation() {
         title: '',
         headerShown: true,
         headerTransparent: true,
-        headerLeftContainerStyle:{
-          marginTop: 30
-        },
         headerTintColor: 'white'  // Color del ícono de la flecha de regreso
       }}
     />

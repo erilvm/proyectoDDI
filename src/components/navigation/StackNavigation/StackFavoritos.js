@@ -13,8 +13,15 @@ export default function StackFavoritos() {
       name='Favoritos'
       component={FavoritosScreen}
       options={{
-        title: '',
+        title: 'Favoritos',
         headerTransparent: true,
+        headerShown: true,
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          fontWeight: 'bold', // Otras opciones de estilo para el título 
+          color: 'green', // Cambia 'tu_color_texto_titulo' 
+          fontSize: 25,
+        }
       }}
     />
 
@@ -23,10 +30,12 @@ export default function StackFavoritos() {
       component={DetallePersonaje}
       options={{
         title: '',
+        headerShown: true,
         headerTransparent: true,
         headerLeftContainerStyle:{
           marginTop: 90
-        }
+        },
+        headerTintColor: 'white'  // Color del ícono de la flecha de regreso
       }}
     />
   </Stack.Navigator>

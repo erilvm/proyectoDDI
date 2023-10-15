@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,//se austa el Top donde empieza el primer card
+    marginTop: 90,//se austa el Top donde empieza el primer card
   },
   backgroundImage: {
     flex: 1,

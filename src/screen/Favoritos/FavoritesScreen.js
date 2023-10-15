@@ -32,6 +32,8 @@ export default function FavoritesScreen() {
  )
 
   return (
-    <HomeScreen characters={characters.filter((character) => personajes.includes(character.id))} />
-  )
+    
+<HomeScreen characters={characters.filter((character) => personajes.includes(character.id))} />
+ 
+     )
 }
