@@ -1,16 +1,16 @@
-import { View, Text, Image} from 'react-native'
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RickAndMortyApi from '../../../api/RickandMortyApi';
 import DetallePersonaje from '../../../screen/CharacterDetail/DetallePersonaje';
-import FavoritosScreen from '../../../screen/Favoritos/FavoritesScreen'
 
 export default function StackNavigation() {
-    const Stack = createStackNavigator();
+    const Stack = createNativeStackNavigator();
+
   return (
     <Stack.Navigator>
     <Stack.Screen
-      name='FavoritosScreen'
-      component={FavoritosScreen}
+      name='RickAndMortyApi'
+      component={RickAndMortyApi}
       options={{
         title: '',
         headerTransparent: true,
@@ -21,9 +21,11 @@ export default function StackNavigation() {
       name="DetallePersonaje"
       component={DetallePersonaje}
       options={{
-        title: 'Detalle Personaje',
-        headerShown: true,
-        tabBarVisible: false,
+        title: '',
+        headerTransparent: false,
+        headerLeftContainerStyle:{
+          marginTop: 20
+        }
       }}
     />
   </Stack.Navigator>

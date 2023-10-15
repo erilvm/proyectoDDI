@@ -4,8 +4,9 @@ import { styles } from './TabNavigation.styles';
 import CustomTabBarButton from './CustomTabBarButton';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-import RickAndMortyApi from '../../../api/RickandMortyApi';
-import FavoritesScreen from '../../../screen/Favoritos/FavoritesScreen';
+import StackNavigation from '../../navigation/StackNavigation/StackNavigation';
+import StackFavoritos from '../../navigation/StackNavigation/StackFavoritos';
+
 import AccountScreen from '../../../screen/AccountScreen';
 
 
@@ -35,7 +36,7 @@ export default function TabNavigation() {
 />
 <Tab.Screen
       name="Inicio"
-      component={RickAndMortyApi}
+      component={StackNavigation}
       options={{
         title: 'Inicio',
         headerShown: false,
@@ -45,12 +46,9 @@ export default function TabNavigation() {
         ),
       }}
     />
-
-
-
       <Tab.Screen
         name="Favoritos"
-        component={FavoritesScreen} 
+        component={StackFavoritos} 
         options={{
           title: 'Favoritos',
         }}

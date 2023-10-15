@@ -15,7 +15,8 @@ export default function HomeScreen(props) {
           data={characters}
           showsVerticalScrollIndicator={false}
           keyExtractor={(characters) => String(characters.id)}
-          renderItem={({ item }) => <Card characters={item} />}
+          renderItem={({ item }) => 
+          <Card characters={item} />}
         />
       </SafeAreaView>
 
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 40,//se austa el Top donde empieza el primer card
   },
   backgroundImage: {
     flex: 1,

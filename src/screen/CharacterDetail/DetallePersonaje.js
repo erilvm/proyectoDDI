@@ -7,7 +7,7 @@ const DetallePersonaje = (props) => {
 
   return (
     <ImageBackground source={require('../../assets/fondoHome2.jpeg')} style={styles.backgroundImage}>
-      <View style={styles.container}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 100 }}>
         <View style={styles.avatarContainer}>
           <Avatar.Image size={200} source={{ uri: params.image }} style={styles.image} />
           <Text style={styles.name}>{params.name}</Text>
