@@ -1,22 +1,43 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet } from 'react-native';
-import { Avatar } from 'react-native-paper';
+import { View, Text, ImageBackground, StyleSheet, Image } from 'react-native';
+
+import { Appbar } from 'react-native-paper';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 const DetallePersonaje = (props) => {
-  const { navigation, route: { params } } = props;
+  const { route: { params } } = props;
 
   return (
     <ImageBackground source={require('../../assets/fondoHome2.jpeg')} style={styles.backgroundImage}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 100 }}>
-        <View style={styles.avatarContainer}>
-          <Avatar.Image size={200} source={{ uri: params.image }} style={styles.image} />
+      
+
+      <View style={styles.container}>
+     
+
+        {/* Contenedor para la imagen y el nombre */}
+        <View style={styles.imageNameContainer}>
+          <Image style={styles.image} source={{ uri: params.image }} />
           <Text style={styles.name}>{params.name}</Text>
+          <FontAwesomeIcon name="heart" size={24} color="red" style={styles.favoriteIcon} />
         </View>
+        {/* Contenedor para la información */}
         <View style={styles.infoContainer}>
-          <Text style={styles.infoText}><Text style={styles.infoValue}>Estado: </Text> {params.status}</Text>
-          <Text style={styles.infoText}><Text style={styles.infoValue}>Especie: </Text> {params.species}</Text>
-          <Text style={styles.infoText}><Text style={styles.infoValue}>Género: </Text>{params.gender}</Text>
-          <Text style={styles.infoText}><Text style={styles.infoValue}>Origen: </Text>{params.origin}</Text>
+          <View style={styles.infoItem}>
+            <Text style={styles.infoLabel}>Estado:</Text>
+            <Text style={styles.infoValue}>{params.status}</Text>
+          </View>
+          <View style={styles.infoItem}>
+            <Text style={styles.infoLabel}>Especie:</Text>
+            <Text style={styles.infoValue}>{params.species}</Text>
+          </View>
+          <View style={styles.infoItem}>
+            <Text style={styles.infoLabel}>Género:</Text>
+            <Text style={styles.infoValue}>{params.gender}</Text>
+          </View>
+          <View style={styles.infoItem}>
+            <Text style={styles.infoLabel}>Origen:</Text>
+            <Text style={styles.infoValue}>{params.origin}</Text>
+          </View>
         </View>
       </View>
     </ImageBackground>
@@ -34,35 +55,48 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 40,
+    paddingTop: 90,
   },
-  avatarContainer: {
-    marginTop: 20,
+  imageNameContainer: {
     alignItems: 'center',
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 20,
   },
   image: {
     marginBottom: 10,
-  },
-  infoContainer: {
-    marginTop: 20,
-    alignItems: 'flex-start',
-    marginEnd: -26,
+    width: 200,
+    height: 200,
+
   },
   name: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'center',  // Alinea el texto al centro horizontalmente
+    color: 'white',  // Cambié el color del nombre 
+    textAlign: 'center',
   },
-  infoText: {
-    fontSize: 20,
-    color: 'white',
-    marginBottom: 8,
+  infoContainer: {
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    padding: 20,
+    borderRadius: 10,
+    width: '80%',
+    alignItems: 'flex-start',
+  },
+  infoItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  infoLabel: {
+    fontWeight: 'bold',
+    marginRight: 10,
+    flex: 1,
   },
   infoValue: {
-    color: 'green',  // Cambiar el color del texto de información
-    fontWeight: 'bold',
-    fontSize:20,
+    flex: 2,
+  },
+  favoriteIcon: {
+    marginTop: 10,
   },
 });
 

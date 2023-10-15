@@ -22,10 +22,12 @@ export default function StackNavigation() {
       component={DetallePersonaje}
       options={{
         title: '',
-        headerTransparent: false,
+        headerShown: true,
+        headerTransparent: true,
         headerLeftContainerStyle:{
-          marginTop: 20
-        }
+          marginTop: 30
+        },
+        headerTintColor: 'white'  // Color del ícono de la flecha de regreso
       }}
     />
   </Stack.Navigator>
