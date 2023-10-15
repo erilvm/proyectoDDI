@@ -47,7 +47,7 @@ export default function TabNavigation() {
       }}
     />
       <Tab.Screen
-        name="Favoritos"
+        name="StackFavoritos"
         component={StackFavoritos} 
         options={{
           title: 'Favoritos',
@@ -71,7 +71,7 @@ const setIcon = (route, routeStatus) => {
     if(route.name === "Cuenta"){
       iconName="user"
     }
-    if(route.name === "Favoritos"){
+    if(route.name === "StackFavoritos"){
       iconName="heart"
     }
 return <AwesomeIcon name={iconName} color={color} style={styles.icon}/>
