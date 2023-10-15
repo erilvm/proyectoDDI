@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, Image } from 'react-native';
-
-import { Appbar } from 'react-native-paper';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import Favoritos from '../../components/Favoritos/Favoritos'
 
 const DetallePersonaje = (props) => {
   const { route: { params } } = props;
@@ -17,8 +15,11 @@ const DetallePersonaje = (props) => {
         {/* Contenedor para la imagen y el nombre */}
         <View style={styles.imageNameContainer}>
           <Image style={styles.image} source={{ uri: params.image }} />
-          <Text style={styles.name}>{params.name}</Text>
-          <FontAwesomeIcon name="heart" size={24} color="red" style={styles.favoriteIcon} />
+          <View style={styles.nameContainer}>
+            <Text style={styles.name}>{params.name}</Text>
+            
+            <Favoritos id={params.id}/>
+          </View>
         </View>
         {/* Contenedor para la información */}
         <View style={styles.infoContainer}>
@@ -67,10 +68,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: 200,
     height: 200,
-
+    borderRadius: 20,
+  },
+  nameContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',  // Alineación vertical
   },
   name: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'white',  // Cambié el color del nombre 
     textAlign: 'center',
@@ -81,6 +86,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '80%',
     alignItems: 'flex-start',
+    margin: -50,
   },
   infoItem: {
     flexDirection: 'row',
