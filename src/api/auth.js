@@ -37,12 +37,12 @@ async function login(email, password) {
       const response = await fetch(url, params);
         if (response.status !== 200) throw response;
 
-        //llama a userController y un console.log de la respuesta.
+        
         const responseData = await response.json();
 
          
         const meResponse = await userController.getMe(responseData.token);
-        console.log('User details:', meResponse);
+        console.log('Detalles de usuario:', meResponse);
 
         return responseData;
     } catch (error) {

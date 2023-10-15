@@ -1,6 +1,6 @@
-import { View, Text, Alert, TouchableOpacity} from 'react-native'
+import { View, Text, Alert, TouchableOpacity, StyleSheet, Image} from 'react-native'
 import React, { useState } from 'react'
-import { styles } from './RegisterForm.styles'
+//import { styles } from './RegisterForm.styles'
 import { TextInput, Button } from 'react-native-paper';
 import { globalStyles } from '../../../styles';
 import { useFormik } from 'formik';
@@ -16,6 +16,8 @@ const commonTextStyle = {
   fontFamily: Fonts.family.bold,
   fontSize: Fonts.size.medium,
   marginVertical: 20,
+  color: 'white'
+
 };
 
 
@@ -37,12 +39,11 @@ const commonTextStyle = {
       try {
         await authApi.register(email, username, password)
         console.log("Usuario registrado")
-        Alert.alert('Registro exitoso', 'Usuario registrado correctamente'); // Show success alert
-        //navigation.navigate('LoginForm'); // Navigate to login screen
+        Alert.alert('Registro exitoso', 'Usuario registrado correctamente'); 
         showLogin();
       } catch (error) {
         console.log(error);
-        Alert.alert('Error', 'No se pudo completar el registro. Por favor, inténtalo de nuevo.');
+        Alert.alert('Error, Por favor, inténtalo de nuevo.');
   
       }
     }
@@ -50,7 +51,8 @@ const commonTextStyle = {
 
 
   return (
-    <View >
+    <View style={styles.container}>
+       <Image source={require('../../../assets/logotipo.png')} style={styles.logo} />
       <TextInput
         label="Nombre de usuario"
         style={globalStyles.input}
@@ -92,18 +94,30 @@ const commonTextStyle = {
        mode="contained" 
        style={globalStyles.buttonText}
       onPress={formik.handleSubmit}
-      loading={formik.isSubmitting}>
-        Registrarse
-        
-       </Button>
-       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      loading={formik.isSubmitting}
+      buttonColor='#A7CB54'>Registrarse</Button>
+
+       <View style={{ flexDirection: 'row', alignItems: 'center'}}>
         <Text style={commonTextStyle}>¿Ya tienes cuenta?</Text>
         
         <TouchableOpacity onPress={showLogin} style={{ marginLeft: 10 }}>
-          <Text style={{ ...commonTextStyle, color: '#4169E1' }}>Inicia Sesión</Text>
+          <Text style={{ ...commonTextStyle, color: '#208D45'}}>Inicia Sesión</Text>
         </TouchableOpacity>
         </View>
 
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,// Un fondo oscuro para mejorar la legibilidad del texto
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    width: 160,
+    height: 160,
+    marginBottom: 20,
+  },
+});

@@ -37,6 +37,8 @@ export const globalStyles = StyleSheet.create({
 
     buttonText: {
         marginTop: 10,
+        height: 50,
+        width: 200,
         
     }
 })

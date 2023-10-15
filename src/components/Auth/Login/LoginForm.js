@@ -1,6 +1,6 @@
-import { View, Text, Alert, ScrollView, TouchableOpacity} from 'react-native'
+import { View, Text, Alert, ScrollView, TouchableOpacity, ImageBackground, StyleSheet, Image} from 'react-native'
 import React, { useState } from 'react'
-import { styles } from './LoginForm.styles'
+//import { styles } from './LoginForm.styles'
 import { TextInput, Button } from 'react-native-paper';
 import Fonts from '../../../constants/Fonts'
 import { globalStyles } from '../../../styles';
@@ -10,12 +10,14 @@ import { authApi } from '../../../api/auth';
 import Toast from 'react-native-root-toast';
 import { useAuth } from '../../../hooks/useAuth';
 
+
 export default function LoginForm(props) {
     // Definir un estilo común
 const commonTextStyle = {
   fontFamily: Fonts.family.bold,
   fontSize: Fonts.size.medium,
   marginVertical: 20,
+  color: 'white'
 };
 
   const { showRegister } = props;
@@ -49,8 +51,12 @@ const commonTextStyle = {
 
 
   return (
-    <View>
 
+    <View style={styles.container}> 
+    
+       
+    <Image source={require('../../../assets/logotipo.png')} style={styles.logo} />
+        
       <TextInput
         label="Correo electronico"
         style={globalStyles.input}
@@ -76,19 +82,34 @@ const commonTextStyle = {
        style={globalStyles.buttonText}
       onPress={formik.handleSubmit}
       loading={formik.isSubmitting}
+      buttonColor='#A7CB54'
       >
         Iniciar sesión
         
        </Button>
-       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+       <View style={{ flexDirection: 'row', alignItems: 'center'}}>
         <Text style={commonTextStyle}>¿No tienes cuenta?</Text>
         
         <TouchableOpacity onPress={showRegister} style={{ marginLeft: 10 }}>
-          <Text style={{ ...commonTextStyle, color: '#4169E1' }}>Registrate</Text>
+          <Text style={{ ...commonTextStyle, color: '#208D45' }}>Registrate</Text>
         </TouchableOpacity>
         </View>
 
-   
     </View>
   )
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    width: 160,
+    height: 160,
+    marginBottom: 20,
+  },
+});
+
+

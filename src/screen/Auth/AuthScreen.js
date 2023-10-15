@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, Image, TouchableOpacity, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import Fonts from '../../constants/Fonts'
 import LoginForm from '../../components/Auth/Login/LoginForm';
@@ -25,20 +25,30 @@ export default function AuthScreen() {
     </View> */}
 
   return (
+    <ImageBackground
+        source={require('../../assets/fondo.jpg')}
+        style={styles.backgroundImage}>
+
     <View style={styles.container}>
     <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
-    <View alignItems='center'>
-    <Image source={require("../../assets/logo.png")} style={{width: 100, height: 100, justifyContent: 'center'}}/>
-    </View>   
-    <Text style={{ fontFamily: Fonts.family.bold, fontSize: Fonts.size.large, marginVertical: 20, textAlign: "center" }}>{showLogin ? "Iniciar sesión" : "Registrarse"}</Text>
+      
     {showLogin ? <LoginForm showRegister={showLoginRegister} /> : <RegisterForm showLogin={showLoginRegister} />}    
     </KeyboardAvoidingView>
     </View>
+    </ImageBackground>
   )
 }
 
   const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    width: '100%',
+    height: '100%',
+  },
   container: {
-    flex: 1, justifyContent: "center", alignItems: "center"
-  } 
+    flex: 1,// Un fondo oscuro para mejorar la legibilidad del texto
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }) 
