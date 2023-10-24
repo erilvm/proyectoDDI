@@ -2,7 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TabNavigation from '../navigation/TabNavigation/TabNavigation';
-//import DetallePersonaje from '../../screen/CharacterDetail/DetallePersonaje';
 
 const Stack = createNativeStackNavigator();
 

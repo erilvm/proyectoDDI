@@ -5,22 +5,42 @@ import { ENV } from '../utils/constants';
 import HomeScreen from '../screen/HomeScreen';
 
 export default function RickandMortyApi() {
-  const [characters, setCharacters] = useState([])
+  const [characters, setCharacters] = useState([]);
+  const [nextUrl,setNextUrl] = useState(null);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(ENV.API_URL_RM)
         setCharacters(response.data.results)
-        console.log('response', response.data)
+        setNextUrl(response.data.info.next);
+        //console.log('response', response.data)
       } catch (error) {
         console.log(error)
       }
     }
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
+
+  const loadMoreData = async () => {
+    try {
+      if (nextUrl) {
+        const response = await axios.get(nextUrl);
+        const newCharacters = response.data.results;
+        //Esta es la forma de agregar nuevos elementos a un array en React
+        setCharacters([...characters, ...newCharacters]);
+        setNextUrl(response.data.info.next);
+        
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-  <HomeScreen characters={characters} />
+  <>
+  <HomeScreen characters={characters} loadMoreData={loadMoreData} nextUrl={nextUrl} />
+  </>
   )
 }

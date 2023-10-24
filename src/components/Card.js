@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Card({ characters }) {
   const navigation = useNavigation();
-  
   const goToPersonaje = () => {
     navigation.navigate('DetallePersonaje', {
       name: characters.name,
