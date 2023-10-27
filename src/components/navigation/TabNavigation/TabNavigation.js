@@ -6,7 +6,7 @@ import CustomTabBarButton from './CustomTabBarButton';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import StackNavigation from '../../navigation/StackNavigation/StackNavigation';
 import StackFavoritos from '../../navigation/StackNavigation/StackFavoritos';
-import AccountScreen from '../../../screen/AccountScreen';
+import StackAccount from '../../navigation/StackNavigation/StackAccount';
 import { useAuth } from '../../../hooks/useAuth';
 
 const Tab = createBottomTabNavigator();
@@ -49,11 +49,11 @@ export default function TabNavigation() {
     >
       <Tab.Screen
         name="Cuenta"
-        component={AccountScreen}
+        component={StackAccount}
         options={{
           tabBarLabel: 'Mi perfil',
           title: '',
-          headerShown: true,
+          headerShown: false,
           headerTransparent: true,
           headerRight: () => (
             <TouchableOpacity style={{ marginRight: 10 }} onPress={handleLogout}>

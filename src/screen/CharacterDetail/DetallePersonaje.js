@@ -23,6 +23,10 @@ const DetallePersonaje = (props) => {
         </View>
         {/* Contenedor para la información */}
         <View style={styles.infoContainer}>
+        <View style={styles.infoItem}>
+            <Text style={styles.infoLabel}>ID:</Text>
+            <Text style={styles.infoValue}>{params.id}</Text>
+          </View>
           <View style={styles.infoItem}>
             <Text style={styles.infoLabel}>Estado:</Text>
             <Text style={styles.infoValue}>{params.status}</Text>
@@ -39,6 +43,7 @@ const DetallePersonaje = (props) => {
             <Text style={styles.infoLabel}>Origen:</Text>
             <Text style={styles.infoValue}>{params.origin}</Text>
           </View>
+          
         </View>
       </View>
     </ImageBackground>
