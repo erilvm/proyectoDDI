@@ -53,7 +53,7 @@ export default function TabNavigation() {
         options={{
           tabBarLabel: 'Mi perfil',
           title: '',
-          headerShown: false,
+          headerShown: true,
           headerTransparent: true,
           headerRight: () => (
             <TouchableOpacity style={{ marginRight: 10 }} onPress={handleLogout}>

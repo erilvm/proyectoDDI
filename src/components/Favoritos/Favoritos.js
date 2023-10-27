@@ -1,48 +1,51 @@
-import React, { useEffect, useState }from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { addFavoriteApi, isFavoriteApi, removeFavoriteApi } from '../../api/favorito';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Favoritos(props) {
-  const { id } = props
-  const [isFavorite, setIsFavorite] = useState(undefined)
-  //Estado para cambiar el de icono de favorito a no favorito
-  const [reloadFavorite, setReloadFavorite] = useState(false)
-  console.log(isFavorite);
+  const { id } = props;
+  const [isFavorite, setIsFavorite] = useState(undefined);
+  const [reloadFavorite, setReloadFavorite] = useState(false);
+
+  // Obtén el usuario actual del contexto de autenticación
+  const { user } = useContext(AuthContext);
+  const userId = user.id; // Suponiendo que el usuario tiene un campo 'id'.
 
   useEffect(() => {
     (async () => {
-      const response = await isFavoriteApi(id)
-      if (response) setIsFavorite(true)
-      else setIsFavorite(false)
-    })()
-  }, [id, reloadFavorite]) //El useEffect se ejecuta cuando reloadFavorite cambia de estado
+      try {
+        const response = await isFavoriteApi(userId, id); // Proporciona userId al verificar si es favorito.
+        setIsFavorite(response);
+      } catch (error) {
+        console.error('Error al verificar si es favorito:', error);
+      }
+    })();
+  }, [id, reloadFavorite]);
 
-  //Cada vez que se cambie el estado de reloadFavorite se ejecuta la funcion
   const onReloadFavorite = () => {
-    setReloadFavorite((prev) => !prev)
-  }
+    setReloadFavorite((prev) => !prev);
+  };
+
   const addFavoritos = async () => {
     try {
-      await addFavoriteApi(id)
-      onReloadFavorite()
+      await addFavoriteApi(userId, id); // Proporciona userId al agregar a favoritos.
+      onReloadFavorite();
+    } catch (error) {
+      console.error('Error al añadir a favoritos:', error);
     }
-    catch (error) {
-      console.log(error);
-    }
-  }
+  };
 
   const removeFavoritos = async () => {
     try {
-      await removeFavoriteApi(id)
-      onReloadFavorite()
-    }
-    catch (error) {
-      console.log(error);
+      await removeFavoriteApi(userId, id); // Proporciona userId al eliminar de favoritos.
+      onReloadFavorite();
+    } catch (error) {
+      console.error('Error al eliminar de favoritos:', error);
     }
   }
 
-  //Definir el color del icono basado en el valor de isFavoritos
   const iconColor = isFavorite ? "red" : "white";
 
   return (
@@ -59,7 +62,6 @@ export default function Favoritos(props) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10, // Puedes ajustar 
-    
+    margin: 10,
   },
 });
