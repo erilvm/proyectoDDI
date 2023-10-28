@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext } from 'react';
 import { storageController } from '../api/token';
 import { userController } from '../../src/api/users';
 import { tokenExpired } from '../utils/tokenExpired';
+import { useCallback } from 'react';
 
 export const AuthContext = createContext();
 
@@ -35,14 +36,16 @@ export const AuthProvider = (props) => {
   const login = async (authToken) => {
     try {
       await storageController.setToken(authToken);
-      const response = await userController.getMe();
+      const response = await userController.getMe(authToken);
+      console.log("Detalles del usuario:", response); // Agrega esta línea para ver los detalles del usuario en la consola
       setUser(response);
       setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
-  }
+  };
+  
 
   const logout = async () => {
     try {
@@ -57,12 +60,10 @@ export const AuthProvider = (props) => {
     }
   }
 
-  const upDateUser = (key, value) => {
-    setUser({
-      ...user,
-      [key]: value
-    })
-  }
+  const updateUser = useCallback((key, value) => {
+    setUser((prevUser) => ({...prevUser, [key]: value }));
+  }, []);
+
 
   // Esta es una función para obtener el ID del usuario logueado
   const getLoggedInUserId = () => {
@@ -74,7 +75,7 @@ export const AuthProvider = (props) => {
     token, // Proporcionar el token en el archivo de authContext de la carpeta context
     login,
     logout,
-    upDateUser,
+    updateUser,
     getLoggedInUserId,
   }
 

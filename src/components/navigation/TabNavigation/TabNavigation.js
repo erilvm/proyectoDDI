@@ -12,31 +12,7 @@ import { useAuth } from '../../../hooks/useAuth';
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigation() {
-  const { logout } = useAuth();
-
-  // Función para manejar el evento de cerrar sesión
-  const handleLogout = () => {
-  // Mostrar una alerta para confirmar el cierre de sesión
-
-    Alert.alert(
-      'Cerrar Sesión',
-      '¿Estás seguro de que deseas cerrar sesión?',
-      [
-        {
-          text: 'Cancelar',
-          style: 'cancel',
-        },
-        {
-          text: 'Aceptar',
-          onPress: () => {
-            // Si se presiona "Aceptar", llamar a la función de cerrar sesión esta se encuentra en useAuth
-            logout();
-          },
-        },
-      ],
-    );
-  };
-
+ 
   return (
     <Tab.Navigator
       initialRouteName="Inicio"
@@ -52,14 +28,11 @@ export default function TabNavigation() {
         component={StackAccount}
         options={{
           tabBarLabel: 'Mi perfil',
-          title: '',
-          headerShown: true,
-          headerTransparent: true,
-          headerRight: () => (
-            <TouchableOpacity style={{ marginRight: 10 }} onPress={handleLogout}>
-              <AwesomeIcon name="sign-out" size={24} color="white" />
-            </TouchableOpacity>
-          ),
+          title: 'bebdeb',
+          //boton de cerrar sesion
+          headerShown: false,
+          headerTransparent: false,
+          
         }}
       />
 

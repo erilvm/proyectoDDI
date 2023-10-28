@@ -48,7 +48,7 @@ async function login(email, password) {
 
         // Aqui ya se obtienen los  detalles del usuario autenticado
         const meResponse = await userController.getMe(responseData.token);
-        console.log('Detalles de usuario:', meResponse);
+        //console.log('Detalles de usuario:', meResponse);
 
         return responseData;
     } catch (error) {

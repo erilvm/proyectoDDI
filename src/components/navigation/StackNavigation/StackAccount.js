@@ -31,7 +31,9 @@ export default function StackAccount() {
       component={ChangeName}
       options={{
         title: '',
-        headerTransparent: false,
+        headerShown: true,
+        headerTransparent: true,
+        headerTintColor: 'white' 
         }
       }
     />

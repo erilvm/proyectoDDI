@@ -7,7 +7,10 @@ export const ENV = {
     ENDPOINTS: {
         REGISTER: 'auth/local/register',
         LOGIN: 'auth/local',
-        USERS_ME: 'users/me'
+        USERS_ME: 'users/me',
+        //crear para actualizar
+        USERS: 'users',
+
     },
     STORAGE: {
         TOKEN: "token",
