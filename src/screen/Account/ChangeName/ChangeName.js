@@ -5,10 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
 import Toast from 'react-native-root-toast';
 import { useAuth } from '../../../hooks/useAuth';
-import { initialValues, validationSchema } from './ChangeNameForm';
 import { userController } from '../../../api/users';
-import { AsyncStorage } from 'react-native';
-
 
 
 export default function ChangeName(props) {
@@ -16,8 +13,10 @@ export default function ChangeName(props) {
   const navigation = useNavigation();
 
   const formik = useFormik({
-    initialValues: initialValues(user.firstname, user.lastname),
-    validationSchema: validationSchema(),
+    initialValues: {
+      firstname: user.firstname || '',
+      lastname: user.lastname ||''
+    },
     validateOnChange: false,
     onSubmit: async (formData) => {
       try {
@@ -39,7 +38,7 @@ export default function ChangeName(props) {
   });
 
   return (
-    <ImageBackground source={require('../../../assets/fondoPerfil.jpg')} style={styles.backgroundImage}>
+    <ImageBackground source={require('../../../assets/fondo4.jpg')} style={styles.backgroundImage}>
       <View style={styles.container}>
         <TextInput
           label="Nombre"
@@ -74,6 +73,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    top: -100,
     justifyContent: 'center',
   },
   input: {

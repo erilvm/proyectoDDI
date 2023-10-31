@@ -1,5 +1,5 @@
 export const ENV = {
-    API_URL: 'http://192.168.0.18:1337/api',
+    API_URL: 'http://192.168.0.20:1337/api',
     //API_URL: 'http://10.13.0.143:1337/api',
     //variable para consumir API DE RICK AND MORTY
     API_URL_RM: 'https://rickandmortyapi.com/api/character',
