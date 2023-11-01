@@ -39,11 +39,15 @@ const commonTextStyle = {
       try {
         await authApi.register(email, username, password)
         console.log("Usuario registrado")
-        Alert.alert('Registro exitoso', 'Usuario registrado correctamente'); 
+        Toast.show('Registrado exitosamente', {
+          position: Toast.positions.CENTER,
+        });
         showLogin();
       } catch (error) {
         console.log(error);
-        Alert.alert('Error, Por favor, inténtalo de nuevo.');
+        Toast.show('Hubo un error', {
+          position: Toast.positions.CENTER,
+        });
   
       }
     }

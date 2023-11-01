@@ -42,7 +42,9 @@ export default function StackAccount() {
       component={ChangeEmail}
       options={{
         title: '',
-        headerTransparent: false,
+        headerShown: true,
+        headerTransparent: true,
+        headerTintColor: 'white' 
         }
       }
     />
@@ -51,7 +53,9 @@ export default function StackAccount() {
       component={ChangeUsername}
       options={{
         title: '',
-        headerTransparent: false,
+        headerShown: true,
+        headerTransparent: true,
+        headerTintColor: 'white' 
         }
       }
     />
@@ -60,7 +64,9 @@ export default function StackAccount() {
       component={ChangePassword}
       options={{
         title: '',
-        headerTransparent: false,
+        headerShown: true,
+        headerTransparent: true,
+        headerTintColor: 'white' 
         }
       }
     />

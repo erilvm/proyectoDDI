@@ -15,7 +15,7 @@ export default function ChangePassword(props) {
 
   const formik = useFormik({
     initialValues: {
-      password: user.password || ''
+      password: '' // Inicializa el campo de contraseña vacío
     },
     validateOnChange: false,
     onSubmit: async (formData) => {
@@ -37,7 +37,7 @@ export default function ChangePassword(props) {
   });
 
   return (
-    <ImageBackground source={require('../../../assets/fondo4.jpg')} style={styles.backgroundImage}>
+    <ImageBackground source={require('../../../assets/fondoHome2.jpeg')} style={styles.backgroundImage}>
       <View style={styles.container}>
         <TextInput
           label="Nueva contraseña"
@@ -58,9 +58,14 @@ export default function ChangePassword(props) {
             />
           }
         />
-
-        <Button mode="contained" onPress={formik.handleSubmit} loading={formik.isSubmitting}>
-          Cambiar contraseña
+        <Button mode="contained" onPress={formik.handleSubmit} loading={formik.isSubmitting } 
+          style={{
+            backgroundColor: 'green', 
+            borderRadius: 15, 
+            width: 200,
+            top: 105
+          }}>
+          Actualizar contraseña
         </Button>
       </View>
     </ImageBackground>
@@ -76,9 +81,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     top: -100,
-    justifyContent: 'center',
+    justifyContent: 'center', 
+    alignItems: 'center', 
   },
   input: {
-    marginBottom: 15,
+    marginBottom: 20,
+    borderRadius: 15,
+    width: 290,
+    height: 65,
+    top: 100,
   },
 });

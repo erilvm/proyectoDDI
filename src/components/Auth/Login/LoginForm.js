@@ -39,7 +39,9 @@ const commonTextStyle = {
         const { email, password } = formData;
         const response = await authApi.login(email, password);
         login(response.jwt)
-        Alert.alert('Fue logueado exitosamente'); // Show success alert
+        Toast.show('Logueado exitosamente', {
+          position: Toast.positions.CENTER,
+        });
       } catch (error) {
         Toast.show('Usuario o contraseña incorrectos', {
           position: Toast.positions.CENTER

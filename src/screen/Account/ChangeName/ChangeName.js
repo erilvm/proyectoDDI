@@ -38,7 +38,7 @@ export default function ChangeName(props) {
   });
 
   return (
-    <ImageBackground source={require('../../../assets/fondo4.jpg')} style={styles.backgroundImage}>
+    <ImageBackground source={require('../../../assets/fondoHome2.jpeg')} style={styles.backgroundImage}>
       <View style={styles.container}>
         <TextInput
           label="Nombre"
@@ -57,8 +57,15 @@ export default function ChangeName(props) {
           style={styles.input}
         />
 
-        <Button mode="contained" onPress={formik.handleSubmit} loading={formik.isSubmitting}>
-          Actualizar datos
+
+<Button mode="contained" onPress={formik.handleSubmit} loading={formik.isSubmitting } 
+          style={{
+            backgroundColor: 'green', // Establece el color de fondo aquí
+            borderRadius: 15, 
+            width:200,
+            top: 140,
+          }}>
+          Actualizar contraseña
         </Button>
       </View>
     </ImageBackground>
@@ -74,9 +81,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     top: -100,
-    justifyContent: 'center',
+    justifyContent: 'center', 
+    alignItems: 'center', 
   },
   input: {
-    marginBottom: 15, // Añadir margen inferior para separar los TextInput
+    marginBottom: 10,
+    borderRadius: 15,
+    width:290,
+    height: 65,
+    top: 125,
   },
 });

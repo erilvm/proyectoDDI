@@ -52,7 +52,7 @@ export default function AccountScreen({ navigation }) {
             <View style={styles.logoutButton}>
               <Button
                 title="Cerrar Sesión"
-                color="green"
+                color='green'
                 borderTopLeftRadius= '50'
                 onPress={handleLogout}
               />
